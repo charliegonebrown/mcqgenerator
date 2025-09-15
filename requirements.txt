@@ -1,0 +1,6 @@
+HuggingFace
+Langchain
+StreamLit
+puthon-dotenv
+pypdf
+
