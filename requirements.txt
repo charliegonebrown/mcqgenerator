@@ -1,6 +1,8 @@
-HuggingFace
+huggingface_hub
 Langchain
 StreamLit
-puthon-dotenv
+python-dotenv
 pypdf
+transformers
+Langchain-huggingface
 

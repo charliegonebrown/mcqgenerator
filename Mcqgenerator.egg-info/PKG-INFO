@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: Mcqgenerator
+Version: 0.0.1
+Author: Odusanya Kayode
+Author-email: Odusanykayode25@gmail.com
+Requires-Dist: transformers
+Requires-Dist: huggingface_hub
+Requires-Dist: langchain
+Requires-Dist: streamlit
+Requires-Dist: python-dotenv
+Requires-Dist: pyPDF2

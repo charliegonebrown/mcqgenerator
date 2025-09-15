@@ -1,0 +1,6 @@
+transformers
+huggingface_hub
+langchain
+streamlit
+python-dotenv
+pyPDF2
