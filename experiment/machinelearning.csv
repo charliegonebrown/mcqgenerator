@@ -1,0 +1,6 @@
+MCQ,Choices,Correct
+Which two primary machine learning paradigms are explicitly mentioned and contrasted in the provided text?,a:Reinforcement Learning and Deep Learning|b:Supervised Learning and Unsupervised Learning|c:Classification and Regression|d:Feature Engineering and Model Deployment,b
+"According to the text, what is a key characteristic of data used in supervised learning?",a:It is always streaming data.|b:It is unlabeled.|c:It consists of labeled datasets.|d:It requires real-time processing.,c
+"What is the primary objective of unsupervised learning, as described in the text?",a:To predict specific outcomes based on labeled data.|b:To identify hidden patterns within unlabeled data.|c:To optimize model parameters using gradient descent.|d:To generate new synthetic data.,b
+"Based on the text, if a dataset lacks explicit labels but you want to group similar instances, which learning paradigm would be most appropriate?",a:Supervised Learning|b:Reinforcement Learning|c:Unsupervised Learning|d:Semi-supervised Learning,c
+The text states that supervised learning algorithms 'train on labeled datasets to predict outcomes'. What is the direct result or goal of this training?,a:Data visualization|b:Outcome prediction|c:Feature selection|d:Model interpretability,b
