@@ -5,5 +5,7 @@ python-dotenv
 pypdf
 transformers
 Langchain-huggingface
+langchain-google-genai
+torch>=2.0.1
 
 -e.
