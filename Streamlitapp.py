@@ -8,7 +8,10 @@ import streamlit as st
 from src.mcqgenerator.MCQGenerator import chain,eval_chain
 from src.mcqgenerator.logger import logging
 
-with open(r"c:\Users\odusa\mcqgenerator\RESPONSE.json","r") as file:
+file_path = os.path.join(os.path.dirname(__file__), "RESPONSE.json")
+
+
+with open(file_path,"r") as file:
     RESPONSE_JSON = json.load(file)
 #CReating the Title
 st.title("MCQ Creator Application with Langchain")
