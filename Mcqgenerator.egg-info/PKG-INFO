@@ -1,4 +1,4 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: Mcqgenerator
 Version: 0.0.1
 Author: Odusanya Kayode
@@ -9,3 +9,6 @@ Requires-Dist: langchain
 Requires-Dist: streamlit
 Requires-Dist: python-dotenv
 Requires-Dist: pyPDF2
+Dynamic: author
+Dynamic: author-email
+Dynamic: requires-dist

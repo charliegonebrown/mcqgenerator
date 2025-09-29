@@ -3,7 +3,7 @@ import json
 import traceback
 import pandas as pd
 from dotenv import load_dotenv
-from src.mcqgenerator.utils import read_file,get_table_data
+from src.mcqgenerator.utils import read_file,get_table_data,generate_pdf
 import streamlit as st
 from src.mcqgenerator.MCQGenerator import chain,eval_chain
 from src.mcqgenerator.logger import logging
@@ -27,38 +27,49 @@ with st.form ("user_inputs"):
     tone= st.text_input("Complexity Level of Questions",max_chars=20,placeholder="simple")
     #Add Button 
     button= st.form_submit_button("Create Mcqs")
-
+    
     #Check if button is clicked and all fields have input
-    if button and uploaded_file is not None and mcq_count and subject:
-        with st.spinner("Loading..."):
-            try:
-                # Read the uploaded file
-                text = read_file(uploaded_file)
+if button and uploaded_file is not None and mcq_count and subject:
+    with st.spinner("Loading..."):
+        try:
+            # Read the uploaded file
+            text = read_file(uploaded_file)
 
-                # Prepare input variables for the first chain
-                variables = {
-                    "text": text,
-                    "number": mcq_count,
-                    "subject": subject,
-                    "tone":tone,
-                    "response_json": json.dumps(RESPONSE_JSON)
-                }
+            # Prepare input variables for the first chain
+            variables = {
+                "text": text,
+                "number": mcq_count,
+                "subject": subject,
+                "tone":tone,
+                "response_json": json.dumps(RESPONSE_JSON)
+            }
 
-                # Invoke the first chain to generate quiz
-                firstquiz = chain.invoke(variables)
-                st.write(firstquiz)
+            # Invoke the first chain to generate quiz
+            firstquiz = chain.invoke(variables)
+            st.write(firstquiz)
 
-                # Prepare input for evaluation chain
-                variable2 = {
-                    "subject": subject,
-                    "quiz": firstquiz
-                }
+            # Prepare input for evaluation chain
+            variable2 = {
+                "subject": subject,
+                "quiz": firstquiz
+            }
 
-                # Invoke the second chain
-                sec_quiz = eval_chain.invoke(variable2)
+            # Invoke the second chain
+            sec_quiz = eval_chain.invoke(variable2)
 
-                # Display the result Analysis
-                st.write(sec_quiz)
+            # Display the result Analysis
+            st.write(sec_quiz)
 
-            except Exception as e:
-                st.error(f"An error occurred: {str(e)}")
+            final_data1=get_table_data(sec_quiz)
+            final_data2=generate_pdf(final_data1)
+            with open(final_data2,"rb") as f:
+                st.download_button(
+                    label="Download MCQ Report as PDF",
+                    data=f,
+                    file_name="mcq_report.pdf",
+                    mime="application/pdf"
+    )
+
+        except Exception as e:
+            st.error(f"An error occurred: {str(e)}")
+
